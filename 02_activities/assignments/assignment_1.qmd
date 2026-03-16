@@ -49,9 +49,9 @@ head ./02_activities/data/gwa.qc.A1.fam
 (iii) Read the .bim file. How many SNPs does the dataset contain?
 
 ```{bash}         
-head ./02_activities/data/gwa.qc.A1.bim
+wc -l ./02_activities/data/gwa.qc.A1.bim
 
-#There are 10 SNPs in the dataset.
+#There are 101083 SNPs in the dataset.
 ```
 
 #### Question 2: Allele Frequency Estimation
