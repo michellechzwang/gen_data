@@ -31,11 +31,11 @@ Before fitting any models, it is essential to understand the data. Use R or bash
 
 (i) Read the .fam file. How many samples does the dataset contain?
 
-```{bash}         
+```{bash} 
 #Read the .fam file
-head ./02_activities/data/gwa.qc.A1.fam
+wc -l ./02_activities/data/gwa.qc.A1.fam
 
-#The dataset contains 10 samples.
+#The dataset contains 4000 samples.
 ```
 
 (ii) What is the 'variable type' of the response variable (i.e.Continuous or binary)?
