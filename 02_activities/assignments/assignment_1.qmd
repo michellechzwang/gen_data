@@ -60,6 +60,7 @@ wc -l ./02_activities/data/gwa.qc.A1.bim
 
 ```{bash}         
 #Create SNP list file with 4 SNPs: rs1861, rs3813199, rs3128342, and rs11804831
+setopt interactivecomments
 printf "%s\n" rs1861 rs3813199 rs3128342 rs11804831 > ./02_activities/data/A1snplist.txt
 
 #Subset SNPs and output allele frequencies
@@ -74,7 +75,12 @@ plink2 --bfile ./02_activities/data/gwa.qc.A1 \
 A1freq <- fread("./02_activities/data/gwa_qc_A1_freq.afreq")
 head(A1freq)
 
-#The allele frequencies for rs1861, rs3813199, rs3128342, and rs11804831 are as follows: 0.0539859, 0.0569126, 0.3051210, and 0.1543410.
+#The allele frequencies for the alternative allele of rs1861, rs3813199, rs3128342, and rs11804831 are as follows: 0.0539859, 0.0569126, 0.3051210, and 0.1543410.
+
+A1freq$REF_FREQ <- 1 - A1freq$ALT_FREQS
+A1freq
+
+#The allele frequencies for the reference allele of rs1861, rs3813199, rs3128342, and rs11804831 are as follows: 0.9460141, 0.9430874, 0.6948790, and 0.8456590.
 ```
 
 (ii) What are the minor allele frequencies (MAFs) for these four SNPs?
@@ -152,7 +158,7 @@ summary(lm_rs1861)
 (ii) How would you interpret the beta coefficient from this regression?
 
 ```         
-# We performed a linear regression to test the association between genotype rs1861 and the continuous phenotype. The beta-coefficient is 0.96698. This means that for every additional C allele an individual has for rs1861, their phenotype increases by 0.96698 units.
+We performed a linear regression to test the association between genotype rs1861 and the continuous phenotype. The beta-coefficient is 0.96698. This means that for every additional C allele an individual has for rs1861, their phenotype increases by 0.96698 units.
 ```
 
 (iii) Plot the scatterplot of phenotype versus the genotype of SNP rs1861. Add the regression line to the plot.
@@ -280,8 +286,7 @@ p2=ggplot() +
     title = "Linear Regression: PHENOTYPE ~ Genotype",
     x = "Genotype (0/1)",
     y = "Phenotype ",
-    size = "Count"
-  ) +
+    size = "Count") +
   # Restrict the visible x- and y-axis range
   coord_cartesian(xlim = c(-0.5,1.5)) +
   scale_x_continuous(breaks = c(0, 1))+
