@@ -302,7 +302,7 @@ AIC(lm_rs1861, lm_rs1861_rec)
 ```
 
 ```         
-# The AIC is higher in the recessive model (AIC=11000.02), indicating that the additive model (AIC=10988.06) may fit better slightly better overall by capturing a more gradual allele-phenotype effect.
+# The AIC is higher in the recessive model (AIC=11291.74), indicating that the additive model (AIC=11276.91) may fit better slightly better overall by capturing a more gradual allele-phenotype effect.
 
 # However, it is also important to note that there are not a lot of individuals with the homozygous variant genotype in this dataset. As a result, that may be why the recessive model and additive models fit similarly.
 ```
