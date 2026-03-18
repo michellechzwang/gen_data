@@ -139,11 +139,10 @@ plink2 --bfile ./02_activities/data/gwa.qc.A1 \
 ```{r}
 # Load genotype data
 geno_A1_subset <- fread("./02_activities/data/geno.A1.additive.raw")
-geno_A1_subset=na.omit(geno_A1_subset)
+geno_A1_subset=geno_A1_subset[!is.na(rs1861_C), ]
 geno_A1_subset$PHENOTYPE=geno_A1_subset$PHENOTYPE-1
 head(geno_A1_subset)
 
-#Subset to just rs1861
 geno_rs1861 <- geno_A1_subset %>%
   select(FID, IID, PHENOTYPE, rs1861_C) %>%
   na.omit()
@@ -158,7 +157,7 @@ summary(lm_rs1861)
 (ii) How would you interpret the beta coefficient from this regression?
 
 ```         
-We performed a linear regression to test the association between genotype rs1861 and the continuous phenotype. The beta-coefficient is 0.96698. This means that for every additional C allele an individual has for rs1861, their phenotype increases by 0.96698 units.
+We performed a linear regression to test the association between genotype rs1861 and the continuous phenotype. The beta-coefficient is 0.97382. This means that for every additional C allele an individual has for rs1861, their phenotype increases by 0.97382 units.
 ```
 
 (iii) Plot the scatterplot of phenotype versus the genotype of SNP rs1861. Add the regression line to the plot.
