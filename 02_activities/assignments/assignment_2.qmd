@@ -142,29 +142,24 @@ assoc_addA2 <- assocA2[TEST == "ADD"]
 # In PLINK2 output they are #CHROM, POS, ID, and P.
 setnames(assoc_addA2, c("#CHROM","POS","ID"), c("CHR","BP","SNP"))
 
-png("./02_activities/assignments/manhattan_plot.png", width = 1200, height = 800, res = 150)
 # Manhattan plot
 manhattan(assoc_addA2,
           chr = "CHR",
           bp  = "BP",
           snp = "SNP",
           p   = "P",
-          xlab = "Chromosome",
-          ylab = "-log10(P)",
+          xlab = "",
+          ylab = "",
           suggestiveline = FALSE,
           cex.axis = 1.5,
           col = c("lightblue", "lightslateblue"))
-dev.off()
-
 ```
 
 (iii) Create a QQ plot of the GWAS p-values.
 
 ```{r}
 # Q-Q plot
-png("./02_activities/assignments/QQ_plot.png", width = 1200, height = 800, res = 150)
 qq(assoc_addA2$P, main = "Q-Q plot of GWAS p-values")
-dev.off()
 ```
 
 ### Criteria
